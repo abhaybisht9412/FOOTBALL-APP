@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMAGE SEARCH ENGINE</title>
+    {{>links}}
+    <link rel="stylesheet" href="./css/gallery.css" />
+  </head>
+  <body>
+    {{>navbar}}
+    <h1>FOOTBALL GALLERY</h1>
+    <form id="search-form">
+      <input
+        type="text"
+        id="search-box"
+        placeholder="Search images...e.g. Real Madrid"
+        autocomplete="off"
+      />
+      <button>Search <i class="fa fa-search"></i></button>
+    </form>
+    <div id="search-result"></div>
+    <button id="show-more-btn">Show More</button>
+
+    <script src="./js/images.js">    
+    </script>
+    {{>scripts}}
+  </body>
+</html>

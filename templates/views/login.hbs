@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {{>links}}
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    {{>navbar}}
+    
+<div class="container main-container">
+    <div class="animate__animated animate__backInLeft">
+        <div class="card">
+            <h1>USER LOGIN</h1>
+            <hr>
+            <div class="form-style">
+                <form action="/login" method="post">
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Registered Email*" value="" name="email" autocomplete="off">
+
+                    <label for="pass">Password</label>
+                    <input type="password" id="pass" placeholder="Password*" value="" name="password" autocomplete="off">
+  
+                    <input type="submit" class="btnRegister" value="Login">
+                 </form>
+                 <div class="already-user">
+                        <h6>Need Help in Sign In ? <span><a href="#">Forgot Password</a></span></h6>
+                    </div>
+            </div>
+        </div>
+    </div>
+        
+</div>
+    
+    {{>scripts}}
+</body>
+</html>

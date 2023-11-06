@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League Standings</title>
+    {{>links}}
+    <link rel="stylesheet" href="./css/league.css">
+    <style>
+      body{
+          background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../images/madrid.jpg');
+          background-size: 100% auto;
+          background-attachment: fixed;
+      }
+      .card{
+    background-color: rgb(253, 255, 189);
+}
+    </style>
+</head>
+<body>
+  {{>navbar}}
+      {{!-- search bar --}}
+      <form id="search-form">
+      <input
+        type="text"
+        id="search-box"
+        placeholder="Enter Year e.g. 2015"
+        autocomplete="off"
+      />
+      <button>Search <i class="fa fa-search"></i></button>
+    </form>
+    <hr>
+    <div id="search-result">
+       <div class="card mb-3" style="max-width: 500px; margin: 20px auto; ">
+
+      <div class="row g-0" style="padding: 20px 10px">
+        <div class="col-md-4">
+          <img src="" id="logo1" class="img-fluid rounded-start" alt="first-team">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" id="team1">Team1</h5>
+            <h5 id="rank1">rank</h5>
+            <h6 id="points1">points</h6>
+            <h6 id="played1">played</h6>
+            <h6 id="won1" class="text-success">won</h6>
+            <h6 id="lose1" class="text-danger">lose</h6>
+            <h6 id="draw1" class="text-primary">draw</h6>
+            <img src="./images/LaLiga_Logo.jpg" style="width:100px;" alt="epl">
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+     </div>
+
+     {{!-- card2 --}}
+     <div class="card mb-3" style="max-width: 500px; margin: 20px auto; ">
+
+      <div class="row g-0" style="padding: 20px 10px">
+        <div class="col-md-4">
+          <img src="" id="logo2" class="img-fluid rounded-start" alt="first-team">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" id="team2">Team1</h5>
+            <h5 id="rank2">rank</h5>
+            <h6 id="points2">points</h6>
+            <h6 id="played2">played</h6>
+            <h6 id="won2" class="text-success">won</h6>
+            <h6 id="lose2" class="text-danger">lose</h6>
+            <h6 id="draw2" class="text-primary">draw</h6>
+            <img src="./images/LaLiga_Logo.jpg" style="width:100px;" alt="epl">
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+     </div>
+
+     {{!-- card3 --}}
+      <div class="card mb-3" style="max-width: 500px; margin: 20px auto; ">
+
+      <div class="row g-0" style="padding: 20px 10px">
+        <div class="col-md-4">
+          <img src="" id="logo3" class="img-fluid rounded-start" alt="first-team">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" id="team3">Team1</h5>
+            <h5 id="rank3">rank</h5>
+            <h6 id="points3">points</h6>
+            <h6 id="played3">played</h6>
+            <h6 id="won3" class="text-success">won</h6>
+            <h6 id="lose3" class="text-danger">lose</h6>
+            <h6 id="draw3" class="text-primary">draw</h6>
+            <img src="./images/LaLiga_Logo.jpg" style="width:100px;" alt="epl">
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+     </div>
+
+    </div>
+
+  <script src="./js/laliga.js"></script>
+{{>scripts}}
+</body>
+</html>

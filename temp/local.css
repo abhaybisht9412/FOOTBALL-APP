@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300;8..30,400;8..30,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Piazzolla', serif;
+}
+
+:root{
+    --main-bg : #1e272e ;
+    --main-color : #0097e6 ;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.oops{
+    padding-left: 40rem;
+    color: var(--main-color);
+}
+
+/* header starts */
+.row{
+    margin: 0;
+}
+.main_menu{
+    background-color: var(--main-bg);
+}
+.navbar{
+    color: #fff;
+    padding: 2rem;
+}
+.navbar li{
+    margin-left: 20px;
+}
+.navbar a{
+    color: #fff;
+    font-size: 2rem;
+}
+.navbar a:hover{
+color: var(--main-color);
+}
+.collapse a:hover{
+    color: var(--main-color);
+}
+.navbar-toggler{
+    background-color: grey;
+}
+
+.fa-snowflake{
+    transition: all linear;
+    animation: rotate 2s linear infinite ;
+    color: var(--main-color);
+}
+@keyframes rotate{
+ 0%{
+    transform: rotate(0deg);
+ }
+ 100%{
+    transform: rotate(360deg);
+ }
+}
+
+/* main starts */
+.main_header_left{
+    height: 70rem;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: flex-start;
+}
+.main_header_left p{
+    font-size: 2.5rem;
+} 
+.main_header_left h1{
+    font-size: 4rem;
+    margin: 1rem 0 4rem 0;
+    text-transform: capitalize;
+}
+.main_header_right{
+    height: 70rem;
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: flex-start;
+}
+.clr_chng{
+    color: var(--main-color);
+}
+.main_header_left button{
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.4rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px black;
+    outline: none;
+}
+.main_header_left button:hover{
+    background-color: var(--main-bg);
+    color: #fff;
+}
+
+/* error image css */
+.errImg img{
+    width: 60rem;
+    height: 30rem;
+    
+}
+
+/* weather style (temp) */
+
+.tempInfo{
+    width: 40rem;
+    margin: auto;
+    min-height: 20rem;
+    background-color: #323544;
+    border-radius: 1rem;
+    /* padding: 1rem; */
+    font-family: "Roboto",sans-serif;
+}
+
+.top-layer{
+    width: 100%;
+     height: 80%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+}
+.top-layer p{
+    color: white;
+     font-weight: 900;
+     font-size: 1.5rem;
+    padding: 2rem; 
+}
+.main-layer{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+.main-layer #city-name{
+    padding: 2rem;
+    color: #bfc1c8;
+    font-weight: 300;
+    font-size: 2rem;
+}
+.main-layer .mid-layer{
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+}
+.main-layer .mid-layer p,
+.main-layer .mid-layer .fa {
+    font-size: 7rem;
+    font-weight: 900;
+
+}
+.fa{
+    color: #009ad8;
+}
+/* .data-hide{
+visibility: hidden;
+transition: all 0.3s;
+} */
+
+/* search bar form */
+.myForm{
+    width: 60%;
+    position: relative;
+    margin: 10rem auto 6rem ;
+}
+.myForm input[type="text"]
+{
+    width: 100%;
+    padding: 2rem 5rem 2rem 2rem;
+    background: #1e202b;
+    color: white;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    border-radius: 3rem;
+}
+::placeholder{
+    color: wheat;
+}
+.myForm input[type="text"]{
+    text-decoration: none;
+}
+.myForm input[type="submit"]
+{
+   
+    position: absolute;
+    top:5px;
+    right: 5px;
+    bottom: 5px;
+    border: none;
+    background: #009ad8;
+    padding: 0 3rem;
+    border-radius: 3rem;
+    color: white;
+    font-size: 1.6rem;
+}
+.myForm input[type="submit"]:hover{
+    color: #009ad8;
+    background-color: #fff;
+}
+
+/* footer starts */
+
+footer{
+    width: 100%;
+    background-color: var(--main-bg);
+    margin-top: auto;
+}
+
+footer p{
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    line-height: 5rem;
+    font-size: 1.4rem;
+}
+
+/* responsive code  */
+@media(max-width: 768px){
+    
+    .main_header_left{
+        height: auto;
+        margin: 5rem 0;
+    }
+    .main_header_right{
+        height: auto;
+        margin: 3rem 0;
+    }
+}
