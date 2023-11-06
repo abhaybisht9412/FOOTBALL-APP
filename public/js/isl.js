@@ -36,7 +36,8 @@ const getApi = async () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '8008fc6ce6msh111a680d5698362p1b0f3djsnfa989567897b',
+            // 'X-RapidAPI-Key': process.env.API_KEY,
+            'X-RapidAPI-Key': "8008fc6ce6msh111a680d5698362p1b0f3djsnfa989567897b",
             'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
         }
     };

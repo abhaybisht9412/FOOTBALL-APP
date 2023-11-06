@@ -55,12 +55,17 @@ app.get('/leagues-isl',(req,res)=>{
 app.get('/leagues-bundesliga',(req,res)=>{
     res.render('bundesliga');
 })
+app.get('/leagues-seriea',(req,res)=>{
+    res.render('seriea');
+})
 app.get('/register' , (req , res)=>{
    res.render('register');
 })
 app.get('/login' , (req , res)=>{
     res.render('login');
  })
+
+// console.log(process.env.API_KEY); 
 
 // sign up post using form post method
 app.post('/register' , async(req , res)=>{
