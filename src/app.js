@@ -6,6 +6,8 @@ const path = require('path');
 const hbs = require('hbs');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser'); //middleware
+const auth = require('./middleware/auth');
 
 require('./db/conn');
 
@@ -20,6 +22,7 @@ const partials_path = path.join(__dirname, "../templates/partials");
 
 // read JSON files
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
 
 // middlewares
@@ -64,6 +67,9 @@ app.get('/register' , (req , res)=>{
 app.get('/login' , (req , res)=>{
     res.render('login');
  })
+app.get('/secret' , auth ,(req , res)=>{
+   res.render('secret');
+})
 
 // console.log(process.env.API_KEY); 
 
@@ -94,9 +100,19 @@ try {
 
         // now after hash jwtOauth for that user using middleware
          const token = await registerFan.generateAuthToken(); //registerFan is not a collection,it is an instance
-        // console.log(`token from app.js ${token}`);        //so when working with instance we use methods 
-        const savedFan = await registerFan.save();           //function in schema           
+        // console.log(`token from app.js ${token}`);        //so when working with instance ,we use methods function in schema
         
+        // now the token has been generated , we store it inside cookie
+        // res.cookie(name,token_value,[options]) the value part could be string or object converted to JSON.
+        res.cookie("jwt", token, {
+            expires : new Date(Date.now() + 3000000),
+            httpOnly : true
+        }); //httponly -> allows cookie to be unchanged by client , 30 second after cookie auto delete
+        // console.log(cookie);
+
+        // register into db
+        const savedFan = await registerFan.save();                      
+        // console.log(savedFan);
         res.status(201).render("index.hbs"); //index.hbs
     }
     else{
@@ -124,18 +140,27 @@ app.post('/login' ,async (req , res)=>{
     // console.log(fanpassword);
 
     // bcrypt check for password
-    console.log(fanpassword);
-    console.log(password);
+    // console.log(fanpassword);
+    // console.log(password);
     const isMatching = await bcryptjs.compare(password,fanpassword); //first arg should be logintime pass and second hashed one
-    console.log(isMatching);
+    // console.log(isMatching);
 
     // after login each time a auth is generated
     const token = await fan.generateAuthToken(); //fan is an instance of the userdata
-    console.log(`token from app.js ${token}`); 
+    // console.log(`token from app.js ${token}`); 
+
+    // now token inside cookie
+    const cookie = res.cookie("jwt", token, {
+        expires : new Date(Date.now() + 3000000),
+        httpOnly : true
+    });
+
+    // now getting or reading cookies
+    // console.log(`cookie values -> ${req.cookies.jwt}`);
 
     if(isMatching){
-    // return alert('Login Successfull');
-        res.status(201).render("index");
+        // res.status(201).render("secret");
+        res.status(201).redirect('/secret');
     }else{
         res.status(404).send('invalid email or password');
     }

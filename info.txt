@@ -21,4 +21,8 @@ jwt is authentication for a user after they have logged in , avoiding frequent a
 
 the jwt encoded data contains three 2 dots and three parts -> header(algo , tokens) , payload(id , issueid) , verify signature(secret code) 
 
-DOT env -> 
+DOT env -> anonymosity of KEYS used 
+
+jwt tokens are stored in cookies. after signup tokens are generated and stored in cookies for each user.
+
+cookie parser is used for getting values inside cookie.
