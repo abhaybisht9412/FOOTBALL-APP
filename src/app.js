@@ -8,8 +8,16 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser'); //middleware
 const auth = require('./middleware/auth');
-
+const server = app.listen(port , () => console.log(`listening to port ${port}`));
+const io = require('socket.io')(server);
+const limiter = require('express-rate-limit');
 require('./db/conn');
+
+// limiter
+app.use(limiter({
+    windowMs : 5000 ,
+    max : 20
+})) //max 20 req in 5 seconds
 
 const footballModel = require('./models/register');
 // paths
@@ -70,6 +78,20 @@ app.get('/login' , (req , res)=>{
 app.get('/secret' , auth ,(req , res)=>{
    res.render('secret');
 })
+app.get('/logout' , auth ,async (req , res)=>{
+    try {
+        console.log(req.user);
+        res.clearCookie("jwt");
+        console.log("user logged out success");
+        await req.user.save();
+        res.render("index");
+    } catch (error) {
+        res.status(500).send(error);
+    }
+ })
+ app.get('/chat' , auth ,(req , res)=>{
+    res.render('chat');
+ })
 
 // console.log(process.env.API_KEY); 
 
@@ -105,7 +127,7 @@ try {
         // now the token has been generated , we store it inside cookie
         // res.cookie(name,token_value,[options]) the value part could be string or object converted to JSON.
         res.cookie("jwt", token, {
-            expires : new Date(Date.now() + 3000000),
+            expires : new Date(Date.now() + 3000000000000),
             httpOnly : true
         }); //httponly -> allows cookie to be unchanged by client , 30 second after cookie auto delete
         // console.log(cookie);
@@ -113,7 +135,7 @@ try {
         // register into db
         const savedFan = await registerFan.save();                      
         // console.log(savedFan);
-        res.status(201).render("index.hbs"); //index.hbs
+        res.status(201).render("index");
     }
     else{
         res.send("passwords not matching!")
@@ -133,6 +155,8 @@ app.post('/login' ,async (req , res)=>{
     const password = req.body.password;
     const email = req.body.email;
     
+    userLog = req.body.email;
+
     const fan = await footballModel.findOne({email:email});
     // console.log(fan);
 
@@ -169,4 +193,35 @@ app.post('/login' ,async (req , res)=>{
     }
 })
     
-app.listen(port , () => console.log(`listening to port ${port}`));
+
+// forum socket
+let socketConnected = new Set();
+
+io.on('connection',onConnection);
+async function onConnection(socket) {
+    console.log('a user connected ',socket.id);
+    socketConnected.add(socket.id);
+    // console.log(socketConnected);
+    //user total
+    io.emit('total-clients',socketConnected.size);
+    
+    // recieving message for broadcast
+    socket.on('message',(data) => {
+        // console.log(data);
+        socket.broadcast.emit('chat-message',data);    
+    })
+
+    // disconnect
+    socket.on('disconnect',() => {
+        console.log(`user disconnected ${socket.id}`);
+        socketConnected.delete(socket.id);
+        // user total after diconnect
+        io.emit('total-clients',socketConnected.size);
+    })
+
+    // feedback typing message
+    socket.on('feedback',(data) => {
+        // console.log(data);
+        socket.broadcast.emit('feedbackAfterBroadCast',data);
+    })
+}

@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300;1,400&display=swap');
+*{
+    padding: 0;
+    margin: 0;   
+    /* background-color: red ; */
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('../images/messi_goat.jpg');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+.main-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.card{
+  height: auto;
+  border-radius: 25px;
+  color: #FFF;
+  width: 80rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.card:hover{
+  opacity: 0.8;
+}
+.clients-total{
+  display: grid;
+  place-content: center;
+  background-color: rgb(21, 20, 20);
+  opacity: 0.7;
+  padding: 10px 0;
+}
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  background-color: black;
+  display: flex;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 8px 16px;
+}
+.chat-as{
+  color: #FFF;
+  /* margin-top: 2rem;
+  margin-left: 20rem; */
+}
+.name-input{
+  margin-left: 1rem;
+  /* margin-left: 2rem;
+  margin-top: 1.5rem; */
+  height: 3rem;
+  border-radius: 4px;
+  padding-left: 8px;
+  font-size: 20px;
+}
+.message-container {
+    display: flex;
+    flex-direction: column;
+    /* background: red; */
+    width: 100%;
+    height: 100vh;
+    /* overflow-y: scroll; */
+    overflow-x: hidden;
+  }
+ul{
+  list-style-type: none;
+}
+.message-left,
+.message-right {
+  color: black;
+  list-style: none;
+  padding: 8px 12px;
+  margin:  12px ;
+  max-width: 700px;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+.message-left {
+  border-radius: 20px 20px 20px 0px;
+  align-self: flex-start;
+  background-color: white;
+  /* box-shadow: -2px 2px 4px #dcdcdc; */
+}
+
+.message-right {
+  border-radius: 20px 20px 0px 20px;
+  align-self: flex-end;
+  background-color: #00b894;
+  /* box-shadow: 2px 2px 4px #dcdcdc; */
+  color: #f6f6f6;
+}
+.message-left > p > span,
+.message-right > p > span {
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.message-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+}
+.message-input {
+    margin:0 0 3rem 9rem ;
+    border-radius: 10px;
+    width: 100%;
+    flex-grow: 1;
+    height: 48px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    padding: 0 12px;
+    background-color: #fff;
+  }
+  .v-divider {
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    height: 48px;
+    width: 2px;
+    background-color: #f6f6f6;
+  }
+  hr{
+    background-color: white;
+  }
+  .clients-total {
+    margin: 20px 0;
+    color: #fff;
+  }
+  .send-button{
+    border-radius: 10px;
+    width: 8rem;
+    height: 3.2rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-bottom: 5rem;
+    background-color: #00b894;
+    color: white;
+    border: none;
+  }
+  .send-button:hover{
+    background-color: white ;
+    color: black;
+  }
+  .feedback {
+    list-style: none;
+    font-style: italic;
+    font-size: 14px;
+    padding: 0px 16px 16px 16px;
+    color: #fff;
+    text-align: center;
+  }
+  

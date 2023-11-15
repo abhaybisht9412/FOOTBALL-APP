@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {{>links}}
+    <link rel="stylesheet" href="./css/chat.css">
+</head>
+<body>
+    {{>navbarsecret}}
+    {{!-- <h1 class="title" id="title"></h1> --}}
+    <h3 class="clients-total" id="clients-total"></h3> 
+
+    <div class="main-container">
+      <div class="card"> <div class="main">
+      <div class="name">
+        <span class="chat-as">CHAT AS : </span>
+        
+        <input
+          type="text"
+          id="name-input"
+          class="name-input"
+          value="anonymous"
+        />
+        <hr class="hr">
+      </div>
+      <div>
+        <ul class="message-container" id="message-container">
+            {{!-- <li class="message-left">
+                <p class="message">
+                    <span></span>
+                </p>
+            </li>
+            <li class="message-right">
+              <p class="message">
+                  <span></span>
+              </p>
+          </li>
+          <!-- feedback message -->
+          <li class="message-feedback">
+            <p class="feedback" id="feedback">
+              typing...
+            </p>
+          </li> --}}
+          {{!-- <li class="message-feedback">
+            <p class="feedback" id="feedback">
+              typing...
+            </p>
+          </li> --}}
+        </ul>
+        <!-- send form -->
+        <form class="message-form" id="message-form">
+          <input type="text" class="message-input" name="message" id="message-input" autocomplete="off" placeholder="Type Message Here...">
+          <div class="v-divider"></div>
+          <button type="submit" class="send-button">Send <i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+
+        <!-- total clients -->
+        
+      </div>
+    </div>
+    </div>
+    </div>
+     
+    
+    {{>scripts}}
+    <script src="socket.io/socket.io.js"></script>
+    <script src="./js/client.js"></script> 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</body>
+</html>
